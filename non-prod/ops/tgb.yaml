@@ -1,0 +1,18 @@
+apiVersion: elbv2.k8s.aws/v1beta1
+kind: TargetGroupBinding
+metadata:
+  finalizers:
+  - elbv2.k8s.aws/resources
+  generation: 1
+  name: ingress-external-tgb
+  namespace: nginx-ingress-external
+spec:
+  ipAddressType: ipv4
+  nodeSelector:
+    matchLabels:
+      beta.kubernetes.io/os: linux
+  serviceRef:
+    name: nginx-ingress-external-ingress-nginx-controller
+    port: 80
+  targetGroupARN: arn:aws:elasticloadbalancing:us-east-1:647255248014:targetgroup/non-prod-lb-tg/0d43a4e184b1f8ec
+  targetType: instance
