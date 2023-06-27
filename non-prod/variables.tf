@@ -44,5 +44,5 @@ variable "private_subnets_ids" {
 # }
 variable "disk_size" {
   type    = number
-  default = 20
+  default = 30
 }
