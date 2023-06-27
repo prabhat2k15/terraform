@@ -18,7 +18,7 @@ variable "cluster_name" {
 }
 variable "cluster_version" {
   type    = string
-  default = "1.23"
+  default = "1.27"
 }
 variable "cidr_block" {
   type        = string
@@ -44,5 +44,5 @@ variable "private_subnets_ids" {
 # }
 variable "disk_size" {
   type    = number
-  default = 20
+  default = 500
 }
