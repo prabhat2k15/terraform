@@ -12,7 +12,7 @@ jobs:
          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
          echo "Tag name from github.repository: ${{ github.repository }}" 
          echo "Tag github.event.repository.name ${{ github.event.repository.name }}"
-         echo "FY$(date "+%y)Q$(date "+%q)FR-$RELEASE_ITERNATION
+         echo "FY$(date "+%y)Q$(date "+%q)FR-"$RELEASE_ITERNATION
          
 
 
