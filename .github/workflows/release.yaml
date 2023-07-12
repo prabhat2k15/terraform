@@ -10,7 +10,10 @@ jobs:
        run: |
          echo "Tag name from GITHUB_REF_NAME: $GITHUB_REF_NAME"
          echo "Tag name from github.ref_name: ${{  github.ref_name }}"
-         echo "Tag name from github.repository: ${{ github.repository }} ${{ github.event.repository.name }}"
+         echo "Tag name from github.repository: ${{ github.repository }}" 
+         echo "Tag github.event.repository.name ${{ github.event.repository.name }}"
+         echo "FY${{date "+%y}}Q${{date "+%q}}FR-${{ RELEASE_ITERNATION }}
+         
 
 
 
