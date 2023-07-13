@@ -17,14 +17,10 @@ jobs:
          echo ${{ github.run_number }}
          echo ${{ github.run_attempt }}     
          echo "RELEASE_ITERATION=prabhat" >> $GITHUB_ENV
-
-         x = $((vars.COUNTER+1))
-         echo $x
-
         
      - name: run curl
        run: |
-        x=expr ${{ vars.COUNTER }} + 1
+        x=eval(expr ${{ vars.COUNTER }} + 1)
         gh api --method PATCH -H "Accept:application/vnd.github+json" -H "X-GitHub-Api-Version:2022-11-28" /repos/${{ github.repository }}/actions/variables/COUNTER -f name='COUNTER' -f value=$x
        env:
           GITHUB_TOKEN: ${{ secrets.GH_ACTION_SECRET }}
