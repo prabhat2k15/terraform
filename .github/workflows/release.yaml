@@ -29,12 +29,12 @@ jobs:
      - name: run curl
        run: |
           echo "https://api.github.com/repos/${{ github.repository }}/actions/variables/COUNTER"
-          curl -L -v \
+          curl -L  \
           -X PATCH \
           -H "Accept: application/vnd.github+json" \
           -H "Authorization: Bearer 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"\
           -H "X-GitHub-Api-Version: 2022-11-28" \
-          https://api.github.com/repos/${{ github.repository }}/actions/variables/COUNTER \
+          https://api.github.com/repos/prabhat2k15/terraform/actions/variables/COUNTER \
           -d '{"name":"COUNTER","value":"prabhat"}'
           
 
