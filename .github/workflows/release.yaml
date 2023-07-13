@@ -17,8 +17,8 @@ jobs:
          echo ${{ github.run_number }}
          echo ${{ github.run_attempt }}     
          echo "RELEASE_ITERATION=prabhat" >> $GITHUB_ENV
-         $(($NUM+200))
-         x = $((vars.COUNTER+1)
+
+         x = $((vars.COUNTER+1))
          echo $x
 
         
