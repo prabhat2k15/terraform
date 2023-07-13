@@ -33,7 +33,8 @@ jobs:
        if: ${{ vars.QUARTER }} != $(date '+%q')
        run: |
         gh api --method PATCH -H "Accept:application/vnd.github+json" -H "X-GitHub-Api-Version:2022-11-28" /repos/${{ github.repository }}/actions/variables/COUNTER -f name='COUNTER' -f value=0
-
+       env:
+          GITHUB_TOKEN: ${{ secrets.GH_ACTION_SECRET }}
          
 #        run: |
 #           echo "https://api.github.com/repos/${{ github.repository }}/actions/variables/COUNTER"
