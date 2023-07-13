@@ -32,7 +32,7 @@ jobs:
           curl -L  \
           -X PATCH \
           -H "Accept: application/vnd.github+json" \
-          -H "Authorization: Bearer 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"\
+          -H "Authorization: Bearer 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"\
           -H "X-GitHub-Api-Version: 2022-11-28" \
           https://api.github.com/repos/prabhat2k15/terraform/actions/variables/COUNTER \
           -d '{"name":"COUNTER","value":"prabhat"}'
