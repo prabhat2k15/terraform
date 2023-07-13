@@ -24,6 +24,10 @@ jobs:
         gh api --method PATCH -H "Accept:application/vnd.github+json" -H "X-GitHub-Api-Version:2022-11-28" /repos/${{ github.repository }}/actions/variables/COUNTER -f name='COUNTER' -f value=`cat counter.txt`
        env:
           GITHUB_TOKEN: ${{ secrets.GH_ACTION_SECRET }}
+          
+     - name: docker push
+       run: |
+        echo "jfrog.io/${{ github.event.repository.name }}-docker/${{ github.event.repository.name }}:FY$(date '+%y')Q$(date '+%q')FR-${{ vars.COUNTER }}"
 
          
 #        run: |
