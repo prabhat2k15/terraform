@@ -28,6 +28,7 @@ jobs:
         
      - name: run curl
        run: |
+          echo "https://api.github.com/repos/${{ github.repository }}/actions/variables/RELEASE_ITERATION"
           curl -L \
           -X PATCH \
           -H "Accept: application/vnd.github+json" \
