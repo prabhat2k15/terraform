@@ -30,7 +30,7 @@ jobs:
        env:  
         Q: "Q$(date '+%q')"
         Q2: vars.QUARTER
-       if:  ${{ env.QUARTER == env.Q }}
+#       if:  ${{ env.QUARTER == env.Q }}
        run: |
         echo "env.Q: ${{ env.Q }}"
         echo "vars.QUARTER: ${{ vars.QUARTER }}"
