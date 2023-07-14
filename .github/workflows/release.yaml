@@ -34,6 +34,7 @@ jobs:
        run: |
         echo "env.Q: ${{ env.Q }}"
         echo "vars.QUARTER: ${{ vars.QUARTER }}"
+        echo "env.QUARTER: ${{ env.QUARTER }}"
         echo "vars.QUARTER != env.Q: ${{ vars.QUARTER != env.Q}}"
         echo "contains( vars.QUARTER, env.Q): ${{ contains( vars.QUARTER, env.Q) }}"
         echo "env.QUARTER == env.Q: ${{ env.QUARTER == env.Q }}"
