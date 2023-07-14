@@ -29,12 +29,14 @@ jobs:
      - name: docker push equal
        env:  
         Q: "Q$(date '+%q')"
-       if:  ${{ vars.QUARTER == 'Q3' }}
+        Q2: vars.QUARTER
+       if:  ${{ env.QUARTER == env.Q }}
        run: |
         echo "env.Q: ${{ env.Q }}"
         echo "vars.QUARTER: ${{ vars.QUARTER }}"
         echo "vars.QUARTER != env.Q: ${{ vars.QUARTER != env.Q}}"
         echo "contains( vars.QUARTER, env.Q): ${{ contains( vars.QUARTER, env.Q) }}"
+        echo "env.QUARTER == env.Q: ${{ env.QUARTER == env.Q }}"
         echo "jfrog.io/${{ github.event.repository.name }}-docker/${{ github.event.repository.name }}:FY$(date '+%y')Q$(date '+%q')FR-${{ vars.COUNTER }}"
      
      - name: docker push not equal
