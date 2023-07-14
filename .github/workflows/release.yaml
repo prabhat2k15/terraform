@@ -31,8 +31,8 @@ jobs:
         Q: $(date '+%q')
        if:  ${{ 'vars.QUARTER' != 'env.Q' }}
        run: |
-        echo ${{ env.Q }}
-        echo ${{ vars.QUARTER }}
+        echo ${{ typeof env.Q }}
+        echo ${{ typeof vars.QUARTER }}
         echo ${{ 'vars.QUARTER' != 'env.Q'}}
         echo ${{ contains('vars.QUARTER', 'env.Q') }}
         echo "jfrog.io/${{ github.event.repository.name }}-docker/${{ github.event.repository.name }}:FY$(date '+%y')Q$(date '+%q')FR-${{ vars.COUNTER }}"
