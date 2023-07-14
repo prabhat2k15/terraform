@@ -29,9 +29,10 @@ jobs:
      - name: docker push
        env:  
         Q: $(date '+%q')
-       if:  3 == 4
+       if:  vars.QUARTER != env.Q
        run: |
-        echo ${{ env.Q }}
+        echo env.Q
+        echo vars.QUARTER
         echo "jfrog.io/${{ github.event.repository.name }}-docker/${{ github.event.repository.name }}:FY$(date '+%y')Q$(date '+%q')FR-${{ vars.COUNTER }}"
      
      - name: docker push
