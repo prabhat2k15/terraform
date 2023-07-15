@@ -39,12 +39,14 @@ jobs:
           # echo "RC=$(echo $RC)" >> $GITHUB_ENV
           echo "QUARTER=$(echo ${{ vars.QUARTER }})" >> $GITHUB_ENV
           echo "RC: $RC"
-          TAG="FY$(date '+%y')Q${QUARTER}FR-${RC}"
+          echo "TAG=FY$(date '+%y')Q${QUARTER}FR-${RC}" >> $GITHUB_ENV
           echo "TAG: $TAG"
+          echo "TAG2: ${{ env.TAG }}"
           echo "ts.jfrog.io/${{ github.event.repository.name }}-docker/${{ github.event.repository.name }}:$TAG"
 
      - name: run curl
        run: |
+        echo "TAG2: ${{ env.TAG }}"
         echo "vars.QUARTER: ${{ vars.QUARTER }}"
         echo "env.QUARTER: ${{ env.QUARTER }}"
         echo "env.RC: ${{ env.RC }}"
