@@ -20,6 +20,8 @@ jobs:
          echo ${{ vars.QUARTER }} != $(date '+%q')
         
      - name: script
+       env:
+          GITHUB_TOKEN: ${{ secrets.GH_ACTION_SECRET }}
        run: |
           QUARTER="${{ vars.QUARTER }}"
           TEMP_QUARTER=$(date '+%q')
