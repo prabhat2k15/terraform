@@ -33,11 +33,12 @@ jobs:
             RC=1
             QUARTER=$TEMP_QUARTER
           fi
+          gh api --method PATCH -H "Accept:application/vnd.github+json" -H "X-GitHub-Api-Version:2022-11-28" /repos/${{ github.repository }}/actions/variables/QUARTER -f name='QUARTER' -f value=$QUARTER
+          gh api --method PATCH -H "Accept:application/vnd.github+json" -H "X-GitHub-Api-Version:2022-11-28" /repos/${{ github.repository }}/actions/variables/RC -f name='RC' -f value=$RC
+          
           # echo "RC=$(echo $RC)" >> $GITHUB_ENV
           echo "QUARTER=$(echo ${{ vars.QUARTER }})" >> $GITHUB_ENV
           echo "RC: $RC"
-          gh api --method PATCH -H "Accept:application/vnd.github+json" -H "X-GitHub-Api-Version:2022-11-28" /repos/${{ github.repository }}/actions/variables/QUARTER -f name='QUARTER' -f value=$QUARTER
-          gh api --method PATCH -H "Accept:application/vnd.github+json" -H "X-GitHub-Api-Version:2022-11-28" /repos/${{ github.repository }}/actions/variables/COUNTER -f name='RC' -f value=$RC
           TAG="FY$(date '+%y')Q${QUARTER}FR-${RC}"
           echo "TAG: $TAG"
           echo "ts.jfrog.io/${{ github.event.repository.name }}-docker/${{ github.event.repository.name }}:$TAG"
