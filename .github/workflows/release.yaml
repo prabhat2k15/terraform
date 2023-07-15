@@ -21,11 +21,11 @@ jobs:
         
      - name: script
        run: |
-          q1=${{ vars.QUARTER }}"
+          q1="${{ vars.QUARTER }}"
           q2=$(date '+%q')
           echo "q1: $q1"
           echo "q2: $q2"
-          if [ $q1 == $q2] then do echo 'hi' else echo 'bye' done
+          if [ $q1 == $q2 ] then do echo 'hi' else echo 'bye' done
      - name: run curl
        run: |
         expr ${{ vars.COUNTER }} + 1 > counter.txt
