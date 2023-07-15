@@ -21,19 +21,20 @@ jobs:
         
      - name: script
        run: |
-          q1="${{ vars.QUARTER }}"
-          q2=$(date '+%q')
-          echo "q1: $q1"
-          echo "q2: $q2"
-          if [ $q1 == $q2 ]
+          QUARTER="${{ vars.QUARTER }}"
+          TEMP_QUARTER=$(date '+%q')
+          echo "QUARTER: $QUARTER"
+          echo "TEMP_QUARTER: $TEMP_QUARTER"
+          if [ $QUARTER != $TEMP_QUARTER ]
           then
-            echo 'hi' 
             echo "q2=$(echo $q2)" >> $GITHUB_ENV
-          else 
-            echo 'bye' 
+            gh api --method PATCH -H "Accept:application/vnd.github+json" -H "X-GitHub-Api-Version:2022-11-28" /repos/${{ github.repository }}/actions/variables/QUARTER -f name='QUARTER' -f value=${{ TEMP_QUARTER }} 
+            gh api --method PATCH -H "Accept:application/vnd.github+json" -H "X-GitHub-Api-Version:2022-11-28" /repos/${{ github.repository }}/actions/variables/COUNTER -f name='COUNTER' -f value=1
+
           fi
      - name: run curl
        run: |
+        echo ${{ vars.QUARTER }}
         echo ${{ env.q2 }}
         expr ${{ vars.COUNTER }} + 1 > counter.txt
         gh api --method PATCH -H "Accept:application/vnd.github+json" -H "X-GitHub-Api-Version:2022-11-28" /repos/${{ github.repository }}/actions/variables/COUNTER -f name='COUNTER' -f value=`cat counter.txt`
@@ -59,7 +60,7 @@ jobs:
        run: |
         echo vars.QUARTER
         echo env.Q
-        gh api --method PATCH -H "Accept:application/vnd.github+json" -H "X-GitHub-Api-Version:2022-11-28" /repos/${{ github.repository }}/actions/variables/COUNTER -f name='COUNTER' -f value=0
+        gh api --method PATCH -H "Accept:application/vnd.github+json" -H "X-GitHub-Api-Version:2022-11-28" /repos/${{ github.repository }}/actions/variables/COUNTER -f name='COUNTER' -f value=1
        env:
           GITHUB_TOKEN: ${{ secrets.GH_ACTION_SECRET }}
           Q: "Q$(date '+%q')"
