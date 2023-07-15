@@ -28,8 +28,8 @@ jobs:
           
      - name: docker push equal
        env:  
-        Q: "Q3"
-        Q2: "$(date '+%q')"
+        Q: "${{ vars.QUARTER | tr -d '\n' }}"
+        Q2: "${{ $(date '+%q') | tr -d '\n' }}"
 #       if:  ${{ env.QUARTER == env.Q }}
        run: |
         echo "env.Q: ${{ env.Q }}"
