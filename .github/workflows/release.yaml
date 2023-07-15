@@ -38,6 +38,7 @@ jobs:
      - name: run curl
        run: |
         echo "vars.QUARTER: ${{ vars.QUARTER }}"
+        echo "env.QUARTER: ${{ env.QUARTER }}"
         echo "env.Q2: ${{ env.Q2 }}"
         echo ${{ env.q2 }}
         expr ${{ vars.COUNTER }} + 1 > counter.txt
